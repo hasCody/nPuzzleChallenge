@@ -22,6 +22,15 @@ public class PuzzleRunner {
 
             Set<Square> pieces = puzzle.getValue();
 
+            PuzzleState originalPuzzle = new PuzzleState((int) Math.sqrt(pieces.size()), (int) Math.sqrt(pieces.size()), pieces);
+
+            for(Square piece : pieces) {
+                originalPuzzle.place(piece.getId());
+            }
+
+            System.out.println("\tOriginal state");
+            System.out.println(originalPuzzle.toString().replaceAll("(?m)^", "\t"));
+
             PuzzleTracker puzzleTracker = new PuzzleTracker();
 
             // Iterate through and create the different ways to start
@@ -54,7 +63,7 @@ public class PuzzleRunner {
                 System.out.println(puzzleTracker.getSuccessPuzzleStates().get(a).toString().replaceAll("(?m)^", "\t"));
             }
 
-            System.out.println("\tSTATES CREATED: " + puzzleTracker.getStates());
+            System.out.println("\tSTATES ANALYZED: " + puzzleTracker.getStates());
             System.out.println("");
         }
     }
