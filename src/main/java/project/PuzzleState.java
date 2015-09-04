@@ -21,10 +21,7 @@ public class PuzzleState {
 
     private int currentPos = 0;
 
-    public PuzzleRunner puzzleRunner = null;
-
-    public PuzzleState(PuzzleRunner puzzleRunner, int rows, int cols, Set<Square> pieces) {
-        this.puzzleRunner = puzzleRunner;
+    public PuzzleState(int rows, int cols, Set<Square> pieces) {
         this.rows = rows;
         this.cols = cols;
         this.board = new Square[rows][cols];
@@ -39,7 +36,6 @@ public class PuzzleState {
     }
 
     public PuzzleState(PuzzleState puzzleState) {
-        this.puzzleRunner = puzzleState.puzzleRunner;
         this.rows = puzzleState.rows;
         this.cols = puzzleState.cols;
         this.currentPos = puzzleState.currentPos;
@@ -71,20 +67,11 @@ public class PuzzleState {
                 place(piece.getId(), x, y);
             }
         }
-
-
-
     }
+
     public PuzzleState newCopy() {
         return new PuzzleState(this);
     }
-
-//    public void add(Square s) {
-//        board[currentPos / rows][currentPos % cols] = s;
-//        usedPieces.put(s.getId(), s);
-////        used[pieces.getId()] = true;
-//        currentPos++;
-//    }
 
     public boolean place(String squareId, int x, int y) {
         Square piece = pieces.get(squareId);
@@ -121,17 +108,7 @@ public class PuzzleState {
     }
 
     public boolean exists(int x, int y) {
-        boolean flag = false;
-        Square temp = null;
-        try {
-            temp = board[x][y];
-            if (temp != null)
-                flag = true;
-        } catch (Exception e) {
-            flag = false;
-        }
-
-        return flag;
+        return get(x,y) != null;
     }
 
     public Square get(int i) {
@@ -167,10 +144,6 @@ public class PuzzleState {
 
     public int getCurrentYPosition() {
         return currentPos % cols;
-    }
-
-    public void rotate(int x, int y) {
-        board[x][y].rotate();
     }
 
     public void swap(int x1, int y1, int x2, int y2) {

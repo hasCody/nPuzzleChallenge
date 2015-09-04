@@ -32,7 +32,7 @@ public class PuzzleRunner {
                     Square startingPiece = new Square(s);
                     startingPiece.rotate(r);
 
-                    PuzzleState startingPuzzle = new PuzzleState(this, (int) Math.sqrt(pieces.size()), (int) Math.sqrt(pieces.size()), pieces);
+                    PuzzleState startingPuzzle = new PuzzleState((int) Math.sqrt(pieces.size()), (int) Math.sqrt(pieces.size()), pieces);
                     startingPuzzle.get(s.getId()).rotate(r);
                     startingPuzzle.place(s.getId());
 

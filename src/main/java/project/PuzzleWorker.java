@@ -112,14 +112,6 @@ public class PuzzleWorker {
         }
     }
 
-    public boolean eval() {
-        boolean flag = false;
-        if (puzzleState.evaluate() == 0)
-            flag = true;
-
-        return flag;
-    }
-
     @Override
     public String toString() {
         return puzzleState.toString();
