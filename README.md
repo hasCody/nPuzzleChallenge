@@ -62,4 +62,36 @@ java -jar ./target/nPuzzle-1.0-SNAPSHOT.jar
 ```
 
 
+# Challenge
+
+### Implement a PuzzleWorker which can find a solution state 
+There is already a PuzzleWorker that can do this.  
+
+We can stub out the current PuzzleWorker and have teams bootstrapped to work on the RUN
+
+The utility classes are still available which allow different operations.  The logic in the PuzzleWorker is mainly using these different utility classes to know how to operate on the PuzzleState (the board).
+
+__Working on having the utility / puzzle board accessible via REST service, then teams can implement their 'PuzzleWorker' in whatever langauge__
+
+__Or people live with my Java code :)__
+
+### Implement a PuzzleWorker which can determine how to transition from starting state to solution state
+Once a solution state is found, how do you go from START -> SOLUTION.  List of 'operations'
+
+* SWAP
+* ROTATE
+* MOVE
+
+### Assortment of starting puzzle states
+Puzzles can be different sizes, for instance a 2x2 can be solved by hand.  4x4 not so.
+Puzzles can defined which are solveable without different operations, for instance no rotating is needed to solve one.
+
+### Puzzles which require specific features
+As 'features' are unlocked, the team can be given a new puzzle state which requires the need for the feature.  Give the team a puzzle that requires rotation.
+
+Utility classes will already have the support for helping with the operations.
+
+Can have a file (similar to license file) that allows the utility class to allow that operation.
+
+
 
